@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class freeParking {
+public class FreeParking {
 
     @Id
     @GeneratedValue
@@ -14,14 +14,14 @@ public class freeParking {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="visa", referencedColumnName ="visa")
-    private user user;
+    private User user;
 
-    public freeParking(Long leaveId, String visa, Date date) {
+    public FreeParking(Long leaveId, String visa, Date date) {
         this.leaveId = leaveId;
         this.date = date;
     }
 
-    public freeParking() {
+    public FreeParking() {
     }
 
     public Long getLeaveId() {

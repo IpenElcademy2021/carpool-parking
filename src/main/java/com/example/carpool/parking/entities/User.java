@@ -4,11 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
-public class user {
+public class User {
 
     @Id
     private String visa;
@@ -16,15 +15,17 @@ public class user {
     private String name;
     private String address;
     private String phoneNumber;
-    //one to many ( user -> request)
+
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "users")
+    private Set<Pooling> poolings = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
-    private Set<request> request = new HashSet<>();
-    public user() {
+    private Set<Request> request = new HashSet<>();
+    public User() {
     }
 
-    public user(String visa, String password, String name, String address, String phoneNumber) {
+    public User(String visa, String password, String name, String address, String phoneNumber) {
         this.visa = visa;
         this.password = password;
         this.name = name;
@@ -70,6 +71,14 @@ public class user {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public Set<Pooling> getPoolings() {
+        return poolings;
+    }
+
+    public void setPoolings(Set<Pooling> poolings) {
+        this.poolings = poolings;
     }
 
     @Override

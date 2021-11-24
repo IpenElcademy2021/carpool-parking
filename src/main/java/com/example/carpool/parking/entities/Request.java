@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class request {
+public class Request {
 
     @Id
     @GeneratedValue
@@ -14,12 +14,12 @@ public class request {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="visa", referencedColumnName ="visa")
-    private user user;
+    private User user;
 
-    public request() {
+    public Request() {
     }
 
-    public request(Long requestId, String visa, Date date, String status) {
+    public Request(Long requestId, String visa, Date date, String status) {
         this.requestId = requestId;
         this.date = date;
         this.status = status;

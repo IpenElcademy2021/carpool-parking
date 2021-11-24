@@ -6,15 +6,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class carOwners {
+public class CarOwners {
     @Id
     private String carPlate;
     private int parkingSlot;
 
-    public carOwners() {
+    public CarOwners() {
     }
 
-    public carOwners(String carPlate, int parkingSlot) {
+    public CarOwners(String carPlate, int parkingSlot) {
         this.carPlate = carPlate;
 
         this.parkingSlot = parkingSlot;
@@ -22,7 +22,7 @@ public class carOwners {
 
     //relationships
     @OneToOne(cascade = CascadeType.ALL)
-    private user user;
+    private User user;
 
     public String getCarPlate() {
         return carPlate;

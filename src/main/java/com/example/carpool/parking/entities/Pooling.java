@@ -1,17 +1,16 @@
 package com.example.carpool.parking.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class pooling {
+public class Pooling {
 
     @Id
     @GeneratedValue
     private Long poolId;
-    private String visa;
     private Date date;
     private String region;
     private String pickUpPoint;
@@ -19,12 +18,21 @@ public class pooling {
     private String departureTime;
     private int seat;
 
-    public pooling() {
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinTable(name = "user_pooling",
+            joinColumns = {@JoinColumn(name = "pool_ID")},
+            inverseJoinColumns = {@JoinColumn (name = "visa")})
+    private Set<User> users = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "poolingss")
+    private Set<UserRequest> userRequests = new HashSet<>();
+
+
+    public Pooling() {
     }
 
-    public pooling(Long poolId, String visa, Date date, String region, String pickUpPoint, String pickUpTime, String departureTime, int seat) {
+    public Pooling(Long poolId, Date date, String region, String pickUpPoint, String pickUpTime, String departureTime, int seat) {
         this.poolId = poolId;
-        this.visa = visa;
         this.date = date;
         this.region = region;
         this.pickUpPoint = pickUpPoint;
@@ -41,13 +49,6 @@ public class pooling {
         this.poolId = poolId;
     }
 
-    public String getVisa() {
-        return visa;
-    }
-
-    public void setVisa(String visa) {
-        this.visa = visa;
-    }
 
     public Date getDate() {
         return date;
@@ -97,11 +98,26 @@ public class pooling {
         this.seat = seat;
     }
 
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Set<UserRequest> getUserRequests() {
+        return userRequests;
+    }
+
+    public void setUserRequests(Set<UserRequest> userRequests) {
+        this.userRequests = userRequests;
+    }
+
     @Override
     public String toString() {
         return "pooling{" +
                 "poolId=" + poolId +
-                ", visa='" + visa + '\'' +
                 ", date=" + date +
                 ", region='" + region + '\'' +
                 ", pickUpPoint='" + pickUpPoint + '\'' +

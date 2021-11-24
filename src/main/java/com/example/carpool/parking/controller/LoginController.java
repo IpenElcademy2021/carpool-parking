@@ -1,7 +1,7 @@
 package com.example.carpool.parking.controller;
 
-import com.example.carpool.parking.entities.user;
-import com.example.carpool.parking.repository.userRepository;
+import com.example.carpool.parking.entities.User;
+import com.example.carpool.parking.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,13 +11,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "loginController")
-public class loginController {
+public class LoginController {
 
     @Autowired
-    userRepository userRepository;
+    UserRepository userRepository;
 
     @GetMapping("/getUsers")
-    List<user> getStudents(){
+    List<User> getStudents(){
         return userRepository.findAll();
     }
 

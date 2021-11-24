@@ -1,25 +1,29 @@
 package com.example.carpool.parking.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class userRequest {
+public class UserRequest {
 
     @Id
     @GeneratedValue
     private Long userRequestId;
-    private Long poolId;
     private String reservationStatus;
     private String Comment;
 
-    public userRequest() {
+    @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinTable(name = "userrequest_pooling",
+            joinColumns = {@JoinColumn(name = "userRequest_Id")},
+            inverseJoinColumns = {@JoinColumn (name = "pool_Id")})
+    private Set<Pooling> poolingss = new HashSet<>();
+
+    public UserRequest() {
     }
 
-    public userRequest(Long userRequestId, Long poolId, String reservationStatus, String comment) {
+    public UserRequest(Long userRequestId, String reservationStatus, String comment) {
         this.userRequestId = userRequestId;
-        this.poolId = poolId;
         this.reservationStatus = reservationStatus;
         Comment = comment;
     }
@@ -32,13 +36,6 @@ public class userRequest {
         this.userRequestId = userRequestId;
     }
 
-    public Long getPoolId() {
-        return poolId;
-    }
-
-    public void setPoolId(Long poolId) {
-        this.poolId = poolId;
-    }
 
     public String getReservationStatus() {
         return reservationStatus;
@@ -56,11 +53,18 @@ public class userRequest {
         Comment = comment;
     }
 
+    public Set<Pooling> getPoolings() {
+        return poolingss;
+    }
+
+    public void setPoolings(Set<Pooling> poolings) {
+        this.poolingss = poolings;
+    }
+
     @Override
     public String toString() {
         return "userRequest{" +
                 "userRequestId=" + userRequestId +
-                ", poolId=" + poolId +
                 ", reservationStatus='" + reservationStatus + '\'' +
                 ", Comment='" + Comment + '\'' +
                 '}';
