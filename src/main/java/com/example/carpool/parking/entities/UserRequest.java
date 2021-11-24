@@ -13,6 +13,7 @@ public class UserRequest {
     private String reservationStatus;
     private String Comment;
 
+    //relationship many to many between UserRequest and Pooling
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "userrequest_pooling",
             joinColumns = {@JoinColumn(name = "userRequest_Id")},

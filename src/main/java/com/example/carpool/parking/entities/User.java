@@ -16,6 +16,7 @@ public class User {
     private String address;
     private String phoneNumber;
 
+    //relationship many to many between User and Pooling
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "users")
     private Set<Pooling> poolings = new HashSet<>();
 

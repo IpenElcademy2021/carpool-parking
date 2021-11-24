@@ -18,12 +18,14 @@ public class Pooling {
     private String departureTime;
     private int seat;
 
+    //relationship many to many between User and Pooling
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "user_pooling",
             joinColumns = {@JoinColumn(name = "pool_ID")},
             inverseJoinColumns = {@JoinColumn (name = "visa")})
     private Set<User> users = new HashSet<>();
 
+    //relationship many to many between UserRequest and Pooling
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "poolingss")
     private Set<UserRequest> userRequests = new HashSet<>();
 
