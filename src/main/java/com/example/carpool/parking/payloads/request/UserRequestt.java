@@ -9,9 +9,7 @@ public class UserRequestt {
 
     @NotBlank
     @NotNull
-    private @Getter
-    @Setter
-    String visa;
+    private @Getter @Setter String visa;
     private @Getter @Setter String password;
     private @Getter @Setter String name;
     private @Getter @Setter String address;
