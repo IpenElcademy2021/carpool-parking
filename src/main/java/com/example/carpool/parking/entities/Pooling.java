@@ -37,7 +37,7 @@ public class Pooling {
 
     @JsonIgnore
     @OneToMany(mappedBy = "pooling")
-    private Set<Request> request = new HashSet<>();
+    private Set<UserRequest> userRequest = new HashSet<>();
 
 
     public Pooling() {

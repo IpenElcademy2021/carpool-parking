@@ -21,7 +21,7 @@ public class UserRequest {
     private Set<Pooling> poolingss = new HashSet<>();*/
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pool_Id", referencedColumnName = "poolId")
+    @JoinColumn(name = "poolId", referencedColumnName = "poolId")
     private Pooling pooling;
 
     public UserRequest() {
