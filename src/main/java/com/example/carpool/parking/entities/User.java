@@ -16,9 +16,9 @@ public class User {
     private String address;
     private String phoneNumber;
 
-    //relationship many to many between User and Pooling
+    /*//relationship many to many between User and Pooling
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "users")
-    private Set<Pooling> poolings = new HashSet<>();
+    private Set<Pooling> poolings = new HashSet<>();*/
 
     @JsonIgnore
     @OneToMany(mappedBy = "user")
@@ -74,13 +74,6 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Set<Pooling> getPoolings() {
-        return poolings;
-    }
-
-    public void setPoolings(Set<Pooling> poolings) {
-        this.poolings = poolings;
-    }
 
     @Override
     public String toString() {

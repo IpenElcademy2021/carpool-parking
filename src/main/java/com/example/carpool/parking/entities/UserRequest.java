@@ -13,12 +13,16 @@ public class UserRequest {
     private String reservationStatus;
     private String Comment;
 
-    //relationship many to many between UserRequest and Pooling
+    /*//relationship many to many between UserRequest and Pooling
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "userrequest_pooling",
             joinColumns = {@JoinColumn(name = "userRequest_Id")},
             inverseJoinColumns = {@JoinColumn (name = "pool_Id")})
-    private Set<Pooling> poolingss = new HashSet<>();
+    private Set<Pooling> poolingss = new HashSet<>();*/
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "poolId", referencedColumnName = "poolId")
+    private Pooling pooling;
 
     public UserRequest() {
     }
@@ -54,13 +58,6 @@ public class UserRequest {
         Comment = comment;
     }
 
-    public Set<Pooling> getPoolings() {
-        return poolingss;
-    }
-
-    public void setPoolings(Set<Pooling> poolings) {
-        this.poolingss = poolings;
-    }
 
     @Override
     public String toString() {

@@ -1,5 +1,7 @@
 package com.example.carpool.parking.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -18,16 +20,24 @@ public class Pooling {
     private String departureTime;
     private int seat;
 
-    //relationship many to many between User and Pooling
+    /*//relationship many to many between User and Pooling
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinTable(name = "user_pooling",
             joinColumns = {@JoinColumn(name = "pool_ID")},
             inverseJoinColumns = {@JoinColumn (name = "visa")})
-    private Set<User> users = new HashSet<>();
+    private Set<User> users = new HashSet<>();*/
 
-    //relationship many to many between UserRequest and Pooling
+    /*//relationship many to many between UserRequest and Pooling
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "poolingss")
-    private Set<UserRequest> userRequests = new HashSet<>();
+    private Set<UserRequest> userRequests = new HashSet<>();*/
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "visa", referencedColumnName = "visa")
+    private User user;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "pooling")
+    private Set<UserRequest> userRequest = new HashSet<>();
 
 
     public Pooling() {
@@ -100,21 +110,6 @@ public class Pooling {
         this.seat = seat;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-
-    public Set<UserRequest> getUserRequests() {
-        return userRequests;
-    }
-
-    public void setUserRequests(Set<UserRequest> userRequests) {
-        this.userRequests = userRequests;
-    }
 
     @Override
     public String toString() {
