@@ -1,5 +1,8 @@
 package com.example.carpool.parking.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -14,31 +17,31 @@ public class Request {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="visa", referencedColumnName ="visa")
-    private User user;
+    private @Getter @Setter User user;
 
-    @ManyToOne
-    @JoinColumn(name = "carowners_car_plate")
-    private CarOwners carowners;
+//    @ManyToOne
+//    @JoinColumn(name = "carowners_car_plate")
+//    private CarOwners carowners;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "car_car_plate")
+//    private CarOwners car;
 
-    @ManyToOne
-    @JoinColumn(name = "car_car_plate")
-    private CarOwners car;
-
-    public CarOwners getCar() {
-        return car;
-    }
-
-    public void setCar(CarOwners car) {
-        this.car = car;
-    }
-
-    public CarOwners getCarowners() {
-        return carowners;
-    }
-
-    public void setCarowners(CarOwners carowners) {
-        this.carowners = carowners;
-    }
+//    public CarOwners getCar() {
+//        return car;
+//    }
+//
+//    public void setCar(CarOwners car) {
+//        this.car = car;
+//    }
+//
+//    public CarOwners getCarowners() {
+//        return carowners;
+//    }
+//
+//    public void setCarowners(CarOwners carowners) {
+//        this.carowners = carowners;
+//    }
 
     public Request() {
     }

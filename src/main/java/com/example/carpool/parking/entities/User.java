@@ -25,8 +25,13 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Request> request = new HashSet<>();
 
+
+
+
+
     //relationships
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
     private CarOwners carOwners;
 
 }

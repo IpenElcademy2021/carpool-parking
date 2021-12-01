@@ -16,7 +16,8 @@ public class CarOwners {
     private @Getter @Setter Integer parkingSlot;
 
 
-    @OneToOne
+    @OneToOne (fetch = FetchType.EAGER)
+    @JoinColumn(name = "visa")
     private @Getter @Setter User user;
 
 
