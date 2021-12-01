@@ -28,7 +28,7 @@ public class PoolingController {
     }
 
 
-    @GetMapping("/all")
+    @GetMapping("/getAllProposePooling")
     public ResponseEntity<List<Pooling>> getAllPooling() {
         List<Pooling> poolings = poolingProposeService.getAllPooling();
         return new ResponseEntity<>(poolings, HttpStatus.OK);
