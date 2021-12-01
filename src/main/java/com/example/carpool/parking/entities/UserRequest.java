@@ -1,6 +1,7 @@
 package com.example.carpool.parking.entities;
 
 import javax.persistence.*;
+import java.lang.reflect.Type;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,7 +21,7 @@ public class UserRequest {
             inverseJoinColumns = {@JoinColumn (name = "pool_Id")})
     private Set<Pooling> poolingss = new HashSet<>();*/
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "poolId", referencedColumnName = "poolId")
     private Pooling pooling;
 

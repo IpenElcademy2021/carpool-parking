@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface PoolRequestRepository extends JpaRepository<UserRequest, Long> {
 
-    @Query("select ur from UserRequest ur join fetch ur.pooling p where ur.user.visa = ?1")
+    @Query("from UserRequest ur join fetch ur.pooling p where p.user.visa = ?1")
     List<UserRequest> findUserRequestByVisa(String visa);
 }
