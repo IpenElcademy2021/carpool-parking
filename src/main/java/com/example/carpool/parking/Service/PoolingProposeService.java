@@ -1,6 +1,7 @@
 package com.example.carpool.parking.Service;
 
 import com.example.carpool.parking.entities.Pooling;
+import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
 import com.example.carpool.parking.payloads.response.PoolingProproseResponse;
 import com.example.carpool.parking.payloads.response.UserResponse;
@@ -16,5 +17,7 @@ public interface PoolingProposeService {
 
     PoolingProproseResponse createPooling(PoolingProposeRequest poolingProposeRequest);
     List<Pooling> getAllPooling();
+
+
 
 }
