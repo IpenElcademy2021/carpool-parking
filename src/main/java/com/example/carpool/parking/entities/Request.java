@@ -16,6 +16,30 @@ public class Request {
     @JoinColumn(name="visa", referencedColumnName ="visa")
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "carowners_car_plate")
+    private CarOwners carowners;
+
+    @ManyToOne
+    @JoinColumn(name = "car_car_plate")
+    private CarOwners car;
+
+    public CarOwners getCar() {
+        return car;
+    }
+
+    public void setCar(CarOwners car) {
+        this.car = car;
+    }
+
+    public CarOwners getCarowners() {
+        return carowners;
+    }
+
+    public void setCarowners(CarOwners carowners) {
+        this.carowners = carowners;
+    }
+
     public Request() {
     }
 

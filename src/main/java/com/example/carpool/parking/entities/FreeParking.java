@@ -1,52 +1,24 @@
 package com.example.carpool.parking.entities;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class FreeParking {
 
     @Id
     @GeneratedValue
-    private Long leaveId;
+    private @Getter @Setter Long  freeParkingID;
 //    private String visa;
-    private Date date;
+    private @Getter @Setter Date date;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="visa", referencedColumnName ="visa")
-    private User user;
+    private @Getter @Setter User user;
 
-    public FreeParking(Long leaveId, String visa, Date date) {
-        this.leaveId = leaveId;
-        this.date = date;
-    }
-
-    public FreeParking() {
-    }
-
-    public Long getLeaveId() {
-        return leaveId;
-    }
-
-    public void setLeaveId(Long leaveId) {
-        this.leaveId = leaveId;
-    }
-
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    @Override
-    public String toString() {
-        return "leave{" +
-                "leaveId=" + leaveId +
-
-                ", date=" + date +
-                '}';
-    }
 }
