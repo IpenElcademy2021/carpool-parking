@@ -24,6 +24,10 @@ public class UserRequest {
     @JoinColumn(name = "poolId", referencedColumnName = "poolId")
     private Pooling pooling;
 
+    //relationships
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
+
     public UserRequest() {
     }
 
