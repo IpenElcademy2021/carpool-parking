@@ -1,11 +1,13 @@
 package com.example.carpool.parking.Service;
 
 import com.example.carpool.parking.entities.Pooling;
+import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
 import com.example.carpool.parking.payloads.response.PoolingProproseResponse;
 import com.example.carpool.parking.payloads.response.UserResponse;
 import com.example.carpool.parking.repository.PoolingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -39,4 +41,5 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
             return poolingRepository.findAll();
 
     }
+
 }
