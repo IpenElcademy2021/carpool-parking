@@ -17,6 +17,5 @@ public class UserServiceImplementation implements UserService {
 
                 .orElseThrow(() -> new IllegalMonitorStateException());
 
-//        return new ELCAMemberResponse("New ELCAMember added successfully!");
     }
 }

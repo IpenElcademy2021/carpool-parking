@@ -26,6 +26,7 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
         newPooling.setPickUpTime(poolingProposeRequest.getPickUpTime());
         newPooling.setDepartureTime(poolingProposeRequest.getDepartureTime());
         newPooling.setSeat(poolingProposeRequest.getSeat());
+        newPooling.setUser(poolingProposeRequest.getUser());
 
         poolingRepository.save(newPooling);
 
