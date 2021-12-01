@@ -16,10 +16,8 @@ public class CarOwners {
     private @Getter @Setter Integer parkingSlot;
 
 
+    @OneToOne
+    private @Getter @Setter User user;
 
-
-
-    @OneToMany(mappedBy = "carowners")
-    private Set<Request> request = new HashSet<>();
 
 }
