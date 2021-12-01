@@ -15,11 +15,7 @@ public class CarOwners {
     private @Getter @Setter String carPlate;
     private @Getter @Setter Integer parkingSlot;
 
-
-
-
-
-    @OneToMany(mappedBy = "carowners")
-    private Set<Request> request = new HashSet<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
 
 }

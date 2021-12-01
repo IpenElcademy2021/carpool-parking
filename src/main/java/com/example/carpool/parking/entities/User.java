@@ -26,8 +26,6 @@ public class User {
     private Set<Request> request = new HashSet<>();
 
     //relationships
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="carPlate", referencedColumnName ="carPlate")
-    private @Getter @Setter CarOwners carOwners;
+
 
 }
