@@ -42,4 +42,9 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
 
     }
 
+    @Override
+    public List<UserRequest> getUserRequestByVisa(String visa) {
+        return poolingRepository.findUserRequestByVisa(visa);
+    }
+
 }

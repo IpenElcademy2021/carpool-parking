@@ -18,6 +18,8 @@ public interface PoolingProposeService {
     PoolingProproseResponse createPooling(PoolingProposeRequest poolingProposeRequest);
     List<Pooling> getAllPooling();
 
+    List<UserRequest> getUserRequestByVisa(String visa);
+
 
 
 }

@@ -63,6 +63,21 @@ public class UserRequest {
         Comment = comment;
     }
 
+    public Pooling getPooling() {
+        return pooling;
+    }
+
+    public void setPooling(Pooling pooling) {
+        this.pooling = pooling;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public String toString() {

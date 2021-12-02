@@ -2,6 +2,7 @@ package com.example.carpool.parking.controller;
 
 import com.example.carpool.parking.Service.PoolingProposeService;
 import com.example.carpool.parking.entities.Pooling;
+import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
 import com.example.carpool.parking.payloads.response.PoolingProproseResponse;
 import com.example.carpool.parking.payloads.response.UserResponse;
@@ -32,5 +33,12 @@ public class PoolingController {
     public ResponseEntity<List<Pooling>> getAllPooling() {
         List<Pooling> poolings = poolingProposeService.getAllPooling();
         return new ResponseEntity<>(poolings, HttpStatus.OK);
+    }
+
+    @GetMapping("/getUserRequestByVisa/{visa}")
+    public ResponseEntity<List<UserRequest>> getUserRequestByVisa (@PathVariable("visa") String visa)
+    {
+        List<UserRequest> userRequests = poolingProposeService.getUserRequestByVisa(visa);
+        return  new ResponseEntity<>(userRequests,HttpStatus.OK);
     }
 }
