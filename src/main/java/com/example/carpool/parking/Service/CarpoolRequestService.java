@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public interface PoolRequestService {
+public interface CarpoolRequestService {
 
     List<UserRequest> getRequestByVisa(String visa);
 }

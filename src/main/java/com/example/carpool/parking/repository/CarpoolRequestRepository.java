@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PoolRequestRepository extends JpaRepository<UserRequest, Long> {
+public interface CarpoolRequestRepository extends JpaRepository<UserRequest, Long> {
 
-    @Query("from UserRequest ur join fetch ur.pooling p where p.user.visa = ?1")
-    List<UserRequest> findUserRequestByVisa(String visa);
+    @Query("from UserRequest ur join fetch ur.pooling p where p.user.visa = :visa")
+    List<UserRequest> findUserRequestByVisa(@Param("visa")String visa);
 }
