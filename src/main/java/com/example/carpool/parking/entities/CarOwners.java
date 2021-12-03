@@ -15,7 +15,16 @@ public class CarOwners {
     private @Getter @Setter String carPlate;
     private @Getter @Setter Integer parkingSlot;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
 
+    //relationships
+//    @OneToOne(mappedBy = "carOwners", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private @Getter @Setter User user;
+
+//    @OneToOne (fetch = FetchType.LAZY)
+//    @JoinColumn(name = "uservisa")
+//    private @Getter @Setter User user;
+
+    @OneToOne (fetch = FetchType.EAGER)
+//    @JoinColumn(name = "visa")
+    private User user;
 }

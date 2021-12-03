@@ -1,5 +1,6 @@
 package com.example.carpool.parking.payloads.request;
 
+import com.example.carpool.parking.entities.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,5 +13,5 @@ public class FreeParkingRequest {
     @NotNull
     private @Getter @Setter Long freeParkingID;
     private @Getter @Setter Date date;
-    private @Getter @Setter String user;
+    private @Getter @Setter User user;
 }

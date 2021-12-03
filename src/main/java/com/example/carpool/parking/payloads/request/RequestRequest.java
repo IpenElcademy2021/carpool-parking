@@ -8,14 +8,14 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-public class PoolingProposeRequest {
+public class RequestRequest {
+
     @NotBlank
     @NotNull
+    private @Getter @Setter Integer requestId;
     private @Getter @Setter Date date;
-    private @Getter @Setter String region;
-    private @Getter @Setter String pickUpPoint;
-    private @Getter @Setter String pickUpTime;
-    private @Getter @Setter String departureTime;
-    private @Getter @Setter int seat;
+    private @Getter @Setter String status;
+    private @Getter @Setter String DriverVisa;
     private @Getter @Setter User user;
+
 }
