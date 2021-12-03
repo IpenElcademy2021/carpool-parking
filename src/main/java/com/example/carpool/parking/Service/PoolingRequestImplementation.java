@@ -15,6 +15,11 @@ public class PoolingRequestImplementation implements PoolRequestService{
 
     @Override
     public List<UserRequest> getRequestByVisa(String visa) {
-        return poolRequestRepository.findUserRequestByVisa(visa);
+        return null;
     }
+
+//    @Override
+//    public List<UserRequest> getRequestByVisa(String visa) {
+//        return poolRequestRepository.findUserRequestByVisa(visa);
+//    }
 }

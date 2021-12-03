@@ -17,7 +17,7 @@ public class FreeParking {
 //    private String visa;
     private @Getter @Setter Date date;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="visa", referencedColumnName ="visa")
     private @Getter @Setter User user;
 

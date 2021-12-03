@@ -22,12 +22,12 @@ public class PoolRequestController {
     @Autowired
     private PoolRequestService poolRequestService;
 
-    @GetMapping("/getRequestByVisa/{visa}")
-    public ResponseEntity<List<UserRequest>> getRequestByVisa (@PathVariable("visa") String visa)
-    {
-        List<UserRequest> userRequests = poolRequestService.getRequestByVisa(visa);
-        return  new ResponseEntity<>(userRequests,HttpStatus.OK);
-    }
+//    @GetMapping("/getRequestByVisa/{visa}")
+//    public ResponseEntity<List<UserRequest>> getRequestByVisa (@PathVariable("visa") String visa)
+//    {
+//        List<UserRequest> userRequests = poolRequestService.getRequestByVisa(visa);
+//        return  new ResponseEntity<>(userRequests,HttpStatus.OK);
+//    }
 }
 
 
