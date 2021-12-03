@@ -1,20 +1,20 @@
 package com.example.carpool.parking.Service;
 
 import com.example.carpool.parking.entities.UserRequest;
-import com.example.carpool.parking.repository.PoolRequestRepository;
+import com.example.carpool.parking.repository.CarpoolRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class PoolingRequestImplementation implements PoolRequestService{
+public class CarpoolRequestImplementation implements CarpoolRequestService {
 
     @Autowired
-    PoolRequestRepository poolRequestRepository;
+    CarpoolRequestRepository carpoolRequestRepository;
 
     @Override
     public List<UserRequest> getRequestByVisa(String visa) {
-        return poolRequestRepository.findUserRequestByVisa(visa);
+        return carpoolRequestRepository.findUserRequestByVisa(visa);
     }
 }
