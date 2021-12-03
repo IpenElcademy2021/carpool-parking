@@ -4,6 +4,7 @@ import com.example.carpool.parking.Service.PoolingProposeService;
 import com.example.carpool.parking.entities.Pooling;
 import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
+import com.example.carpool.parking.payloads.request.PoolingUserRequest;
 import com.example.carpool.parking.payloads.response.PoolingProproseResponse;
 import com.example.carpool.parking.payloads.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class PoolingController {
     public ResponseEntity<PoolingProproseResponse> createPooling(@RequestBody PoolingProposeRequest pooling){
         PoolingProproseResponse newPooling = poolingProposeService.createPooling(pooling);
         return new ResponseEntity<>(newPooling,HttpStatus.CREATED);
+    }
+
+    @PostMapping("/createUserRequest")
+    public ResponseEntity<PoolingProproseResponse> createUserRequest(@RequestBody PoolingUserRequest poolingUserRequest){
+        PoolingProproseResponse poolingProproseResponse = poolingProposeService.createUserRequest(poolingUserRequest);
+        return new ResponseEntity<>(poolingProproseResponse,HttpStatus.CREATED);
     }
 
 
