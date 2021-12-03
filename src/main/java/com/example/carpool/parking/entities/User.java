@@ -23,15 +23,18 @@ public class User {
     @ManyToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "users")
     private Set<Pooling> poolings = new HashSet<>();*/
     @OneToMany(mappedBy = "user")
-    private Set<Request> request = new HashSet<>();
+//    private @Getter @Setter Set<Request> request = new HashSet<>();
 
+    @OneToOne(mappedBy = "user")
+    private  @Getter @Setter CarOwners carOwners;
 
+//v1
+//    @OneToOne (fetch = FetchType.LAZY)
+//    @JoinColumn(name = "carPlate")
+//    private @Getter @Setter CarOwners carOwners;
 
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private @Getter @Setter CarOwners carOwners;
 
-
-    //relationships
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-
-    private CarOwners carOwners;
 
 }

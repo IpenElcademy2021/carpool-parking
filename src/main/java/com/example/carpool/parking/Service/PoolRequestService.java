@@ -7,6 +7,6 @@ import java.util.List;
 
 @Component
 public interface PoolRequestService {
-
     List<UserRequest> getRequestByVisa(String visa);
+//
 }

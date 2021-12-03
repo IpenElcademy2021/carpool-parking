@@ -16,9 +16,15 @@ public class CarOwners {
     private @Getter @Setter Integer parkingSlot;
 
 
+    //relationships
+//    @OneToOne(mappedBy = "carOwners", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private @Getter @Setter User user;
+
+//    @OneToOne (fetch = FetchType.LAZY)
+//    @JoinColumn(name = "uservisa")
+//    private @Getter @Setter User user;
+
     @OneToOne (fetch = FetchType.EAGER)
-    @JoinColumn(name = "visa")
-    private @Getter @Setter User user;
-
-
+//    @JoinColumn(name = "visa")
+    private User user;
 }
