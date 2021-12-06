@@ -1,5 +1,6 @@
 package com.example.carpool.parking.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,6 +27,7 @@ public class User {
 //    private @Getter @Setter Set<Request> request = new HashSet<>();
 
     @OneToOne(mappedBy = "user")
+    @JsonIgnore
     private  @Getter @Setter CarOwners carOwners;
 
 //v1
