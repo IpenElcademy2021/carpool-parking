@@ -1,7 +1,9 @@
 package com.example.carpool.parking.controller;
 
 import com.example.carpool.parking.Service.UserService;
+import com.example.carpool.parking.entities.CarOwners;
 import com.example.carpool.parking.entities.FreeParking;
+import com.example.carpool.parking.entities.Request;
 import com.example.carpool.parking.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,5 +33,17 @@ public class UserController {
     public ResponseEntity<List<User>> getAllFreeParking () {
         List<User> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @GetMapping("/findbyvisa/{visa}")
+    public ResponseEntity<List<User>> searchByVisa (@PathVariable("visa") String visa) {
+        List<User> auser = userService.searchByVisa(visa);
+        return new ResponseEntity<>(auser, HttpStatus.OK);
+    }
+
+    @GetMapping("/searchUserByCarOwners/{carOwners}")
+    public ResponseEntity<List<User>> searchByDriverVisa (@PathVariable("carOwners") CarOwners carOwners) {
+        List<User> auser = userService.searchBycarOwners(carOwners);
+        return new ResponseEntity<>(auser, HttpStatus.OK);
     }
 }

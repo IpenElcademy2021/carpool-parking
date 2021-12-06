@@ -30,7 +30,7 @@ public class RequestController {
 
 
     @GetMapping("/searchRequestByDriverVisaAndStatus/{driverVisa}/{status}")
-    public ResponseEntity<List<Request>> searchByDriverVisa (@PathVariable("driverVisa") String driverVisa, @PathVariable("status") String status) {
+    public ResponseEntity<List<Request>> searchByDriverVisaAndStatus (@PathVariable("driverVisa") String driverVisa, @PathVariable("status") String status) {
         List<Request> requests = requestService.searchByDriverVisaAndStatus(driverVisa, status);
         return new ResponseEntity<>(requests, HttpStatus.OK);
     }
