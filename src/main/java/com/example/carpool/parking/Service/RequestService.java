@@ -17,9 +17,10 @@ public interface RequestService {
     List<Request> getAllParkingRequest();
     MainResponse createParkingRequest(RequestRequest requestRequest);
     List<Request> searchByDriverVisa(String driverVisa);
+    List<Request> searchByDriverVisaAndStatus(String driverVisa, String status);
     List<Request> searchByUser(User user);
-
     Optional<Request> updateRequestStatus(Integer requestId, RequestRequest requestRequest);
+    void deleteEmployee(Integer requestId);
 
 
 }

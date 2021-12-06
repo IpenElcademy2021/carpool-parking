@@ -42,14 +42,17 @@ public class RequestServiceImplementation implements RequestService{
     }
 
     @Override
+    public List<Request> searchByDriverVisaAndStatus(String driverVisa, String status) {
+        return requestRepository.searchByDriverVisaAndStatus(driverVisa, status);
+    }
+
+
+    @Override
     public List<Request> searchByUser(User user) {
         return requestRepository.searchByUser(user);
     }
 
-//    @Override
-//    public List<Request> searchByVisa(String visa) {
-//        return requestRepository.searchByVisa(visa);
-//    }
+
 
 
     @Override
@@ -64,6 +67,13 @@ public class RequestServiceImplementation implements RequestService{
         }
         requestRepository.save(request.get());
         return request;
+    }
+
+    @Override
+    public void deleteEmployee(Integer requestId) {
+        if (requestRepository.getById(requestId).getRequestId().equals(requestId)){
+            requestRepository.deleteById(requestId);
+        }
     }
 
 

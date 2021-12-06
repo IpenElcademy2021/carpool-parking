@@ -1,5 +1,6 @@
 package com.example.carpool.parking.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,7 +25,8 @@ public class CarOwners {
 //    @JoinColumn(name = "uservisa")
 //    private @Getter @Setter User user;
 
-    @OneToOne (fetch = FetchType.EAGER)
+    @OneToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinColumn(name = "visa")
-    private User user;
+
+    private @Getter @Setter User user;
 }

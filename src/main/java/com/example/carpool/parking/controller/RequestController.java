@@ -28,11 +28,12 @@ public class RequestController {
         return new ResponseEntity<>(requests, HttpStatus.OK);
     }
 
-//    @GetMapping("/searchRequestByVisa/{visa}")
-//    public ResponseEntity<List<Request>> searchByVisa (@PathVariable("visa") String visa) {
-//        List<Request> requests = requestService.searchByVisa(visa);
-//        return new ResponseEntity<>(requests, HttpStatus.OK);
-//    }
+
+    @GetMapping("/searchRequestByDriverVisaAndStatus/{driverVisa}/{status}")
+    public ResponseEntity<List<Request>> searchByDriverVisaAndStatus (@PathVariable("driverVisa") String driverVisa, @PathVariable("status") String status) {
+        List<Request> requests = requestService.searchByDriverVisaAndStatus(driverVisa, status);
+        return new ResponseEntity<>(requests, HttpStatus.OK);
+    }
 
         @GetMapping("/searchRequestByUser/{user}")
     public ResponseEntity<List<Request>> searchByVisa (@PathVariable("user") User user) {
@@ -56,6 +57,12 @@ public class RequestController {
     public Optional<Request> updateRequestStatus(@PathVariable Integer id, @RequestBody RequestRequest requestRequest) {
         return requestService.updateRequestStatus(id, requestRequest);
 
+    }
+
+    @DeleteMapping("/deleteParkingRequest/{requestId}")
+    public ResponseEntity<?> deleteEmployee(@PathVariable("requestId") Integer requestId) {
+        requestService.deleteEmployee(requestId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
