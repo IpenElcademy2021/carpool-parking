@@ -12,6 +12,5 @@ public interface RequestRepository extends JpaRepository<Request, Integer> {
 
     List<Request> searchByDriverVisa(String driverVisa);
     List<Request> searchByUser(User user);
-
-
+    List<Request> searchByDriverVisaAndStatus(String driverVisa, String status);
 }
