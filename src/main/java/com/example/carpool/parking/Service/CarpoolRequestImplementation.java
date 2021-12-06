@@ -17,4 +17,22 @@ public class CarpoolRequestImplementation implements CarpoolRequestService {
     public List<UserRequest> getRequestByVisa(String visa) {
         return carpoolRequestRepository.findUserRequestByVisa(visa);
     }
+
+    @Override
+    public void updateRequest(UserRequest userRequest, Long id) {
+        carpoolRequestRepository.findById(id)
+        .map(userRequest1 -> {
+            userRequest1.setReservationStatus(userRequest.getReservationStatus());
+            userRequest1.setComment(userRequest.getComment());
+            carpoolRequestRepository.save(userRequest1);
+            return null;
+
+        })
+                .orElse(null);
+    }
+
+    @Override
+    public List<UserRequest> getAll() {
+        return carpoolRequestRepository.findAll();
+    }
 }

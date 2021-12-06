@@ -5,15 +5,14 @@ import com.example.carpool.parking.entities.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/prc")
+@Transactional
 public class CarpoolRequestController {
 
     @Autowired
@@ -24,6 +23,17 @@ public class CarpoolRequestController {
     {
         List<UserRequest> userRequests = carpoolRequestService.getRequestByVisa(visa);
         return  new ResponseEntity<>(userRequests,HttpStatus.OK);
+    }
+
+    @PutMapping("/updateRequest/{id}")
+    public void updateRequest(@RequestBody UserRequest userRequest, @PathVariable Long id)
+    {
+        carpoolRequestService.updateRequest(userRequest, id);
+    }
+
+    @GetMapping("/getAll")
+    public List<UserRequest> getAll(){
+        return carpoolRequestService.getAll();
     }
 }
 

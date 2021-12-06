@@ -9,4 +9,8 @@ import java.util.List;
 public interface CarpoolRequestService {
 
     List<UserRequest> getRequestByVisa(String visa);
+
+    void updateRequest(UserRequest userRequest, Long id);
+
+    List<UserRequest> getAll();
 }
