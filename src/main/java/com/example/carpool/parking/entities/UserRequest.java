@@ -21,12 +21,13 @@ public class UserRequest {
             inverseJoinColumns = {@JoinColumn (name = "pool_Id")})
     private Set<Pooling> poolingss = new HashSet<>();*/
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
+            //(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "poolId", referencedColumnName = "poolId")
     private Pooling pooling;
 
     //relationships
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private User user;
 
     public UserRequest() {
@@ -63,6 +64,21 @@ public class UserRequest {
         Comment = comment;
     }
 
+    public Pooling getPooling() {
+        return pooling;
+    }
+
+    public void setPooling(Pooling pooling) {
+        this.pooling = pooling;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     @Override
     public String toString() {

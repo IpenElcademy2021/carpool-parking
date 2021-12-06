@@ -3,9 +3,11 @@ package com.example.carpool.parking.Service;
 import com.example.carpool.parking.entities.Pooling;
 import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
+import com.example.carpool.parking.payloads.request.PoolingUserRequest;
 import com.example.carpool.parking.payloads.response.PoolingProproseResponse;
 import com.example.carpool.parking.payloads.response.UserResponse;
 import com.example.carpool.parking.repository.PoolingRepository;
+import com.example.carpool.parking.repository.PoolingUserRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
@@ -18,6 +20,9 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
 
     @Autowired
     PoolingRepository poolingRepository;
+
+    @Autowired
+    PoolingUserRequestRepository poolingUserRequestRepository;
 
     @Override
     public PoolingProproseResponse createPooling(PoolingProposeRequest poolingProposeRequest) {
@@ -39,6 +44,25 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
     public List<Pooling> getAllPooling() {
 
             return poolingRepository.findAll();
+
+    }
+
+    @Override
+    public List<UserRequest> getUserRequestByVisa(String visa) {
+        return poolingRepository.findUserRequestByVisa(visa);
+    }
+
+    @Override
+    public PoolingProproseResponse createUserRequest(PoolingUserRequest poolingUserRequest) {
+        UserRequest newUserRequest = new UserRequest();
+        newUserRequest.setReservationStatus(poolingUserRequest.getReservationStatus());
+        newUserRequest.setComment(poolingUserRequest.getComment());
+        newUserRequest.setUser(poolingUserRequest.getUser());
+        newUserRequest.setPooling(poolingUserRequest.getPooling());
+
+        poolingUserRequestRepository.save(newUserRequest);
+
+        return new PoolingProproseResponse("New Request Added");
 
     }
 

@@ -2,7 +2,9 @@ package com.example.carpool.parking.controller;
 
 import com.example.carpool.parking.Service.PoolingProposeService;
 import com.example.carpool.parking.entities.Pooling;
+import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
+import com.example.carpool.parking.payloads.request.PoolingUserRequest;
 import com.example.carpool.parking.payloads.response.PoolingProproseResponse;
 import com.example.carpool.parking.payloads.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +29,23 @@ public class PoolingController {
         return new ResponseEntity<>(newPooling,HttpStatus.CREATED);
     }
 
+    @PostMapping("/createUserRequest")
+    public ResponseEntity<PoolingProproseResponse> createUserRequest(@RequestBody PoolingUserRequest poolingUserRequest){
+        PoolingProproseResponse poolingProproseResponse = poolingProposeService.createUserRequest(poolingUserRequest);
+        return new ResponseEntity<>(poolingProproseResponse,HttpStatus.CREATED);
+    }
 
-    @GetMapping("/all")
+
+    @GetMapping("/getAllProposePooling")
     public ResponseEntity<List<Pooling>> getAllPooling() {
         List<Pooling> poolings = poolingProposeService.getAllPooling();
         return new ResponseEntity<>(poolings, HttpStatus.OK);
+    }
+
+    @GetMapping("/getUserRequestByVisa/{visa}")
+    public ResponseEntity<List<UserRequest>> getUserRequestByVisa (@PathVariable("visa") String visa)
+    {
+        List<UserRequest> userRequests = poolingProposeService.getUserRequestByVisa(visa);
+        return  new ResponseEntity<>(userRequests,HttpStatus.OK);
     }
 }
