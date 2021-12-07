@@ -1,13 +1,11 @@
 package com.example.carpool.parking.Service;
 
-import com.example.carpool.parking.entities.CarOwners;
 import com.example.carpool.parking.entities.Pooling;
 import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
 import com.example.carpool.parking.payloads.request.PoolingUserRequest;
 import com.example.carpool.parking.payloads.response.PoolingProproseResponse;
 import com.example.carpool.parking.payloads.response.UserResponse;
-import com.example.carpool.parking.repository.CarOwnersRepository;
 import com.example.carpool.parking.repository.PoolingRepository;
 import com.example.carpool.parking.repository.PoolingUserRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +20,6 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
 
     @Autowired
     PoolingRepository poolingRepository;
-
-    @Autowired
-    CarOwnersRepository carOwnersRepository;
 
     @Autowired
     PoolingUserRequestRepository poolingUserRequestRepository;
@@ -77,3 +72,17 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
     }
 
 }
+    @Override
+    public void updateSeat(Pooling pooling, Long id) {
+            poolingRepository.findById(id)
+                    .map(pooling1 -> {
+                        pooling1.setSeat(pooling.getSeat());
+                        poolingRepository.save(pooling1);
+                        return null;
+                    })
+
+                    .orElse(null);
+        }
+    }
+
+

@@ -27,5 +27,5 @@ public interface PoolingProposeService {
     List<CarOwners> getAllCarOwnersForPooling();
 
 
-
+    void updateSeat(Pooling pooling, Long id);
 }
