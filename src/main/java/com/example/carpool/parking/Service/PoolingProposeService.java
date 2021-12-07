@@ -24,5 +24,5 @@ public interface PoolingProposeService {
     PoolingProproseResponse createUserRequest(PoolingUserRequest poolingUserRequest);
 
 
-
+    void updateSeat(Pooling pooling, Long id);
 }

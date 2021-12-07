@@ -48,4 +48,10 @@ public class PoolingController {
         List<UserRequest> userRequests = poolingProposeService.getUserRequestByVisa(visa);
         return  new ResponseEntity<>(userRequests,HttpStatus.OK);
     }
+
+    @PutMapping("/updateSeat/{id}")
+    public void updateSeat(@RequestBody Pooling pooling, @PathVariable Long id)
+    {
+        poolingProposeService.updateSeat(pooling, id);
+    }
 }

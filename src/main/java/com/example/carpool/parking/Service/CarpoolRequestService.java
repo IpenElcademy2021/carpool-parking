@@ -1,5 +1,6 @@
 package com.example.carpool.parking.Service;
 
+import com.example.carpool.parking.entities.Pooling;
 import com.example.carpool.parking.entities.UserRequest;
 import org.springframework.stereotype.Component;
 
@@ -13,4 +14,6 @@ public interface CarpoolRequestService {
     void updateRequest(UserRequest userRequest, Long id);
 
     List<UserRequest> getAll();
+
+
 }

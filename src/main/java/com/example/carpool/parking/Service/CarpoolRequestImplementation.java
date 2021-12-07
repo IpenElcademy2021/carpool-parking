@@ -1,7 +1,9 @@
 package com.example.carpool.parking.Service;
 
+import com.example.carpool.parking.entities.Pooling;
 import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.repository.CarpoolRequestRepository;
+import com.example.carpool.parking.repository.PoolingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +14,7 @@ public class CarpoolRequestImplementation implements CarpoolRequestService {
 
     @Autowired
     CarpoolRequestRepository carpoolRequestRepository;
+    PoolingRepository poolingRepository;
 
     @Override
     public List<UserRequest> getRequestByVisa(String visa) {
@@ -30,6 +33,8 @@ public class CarpoolRequestImplementation implements CarpoolRequestService {
         })
                 .orElse(null);
     }
+
+
 
     @Override
     public List<UserRequest> getAll() {

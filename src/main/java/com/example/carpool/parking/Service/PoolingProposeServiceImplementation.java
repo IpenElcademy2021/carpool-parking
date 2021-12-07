@@ -66,4 +66,17 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
 
     }
 
-}
+    @Override
+    public void updateSeat(Pooling pooling, Long id) {
+            poolingRepository.findById(id)
+                    .map(pooling1 -> {
+                        pooling1.setSeat(pooling.getSeat());
+                        poolingRepository.save(pooling1);
+                        return null;
+                    })
+
+                    .orElse(null);
+        }
+    }
+
+
