@@ -1,6 +1,7 @@
 package com.example.carpool.parking.controller;
 
 import com.example.carpool.parking.Service.PoolingProposeService;
+import com.example.carpool.parking.entities.CarOwners;
 import com.example.carpool.parking.entities.Pooling;
 import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
@@ -49,11 +50,6 @@ public class PoolingController {
         return  new ResponseEntity<>(userRequests,HttpStatus.OK);
     }
 
-    @GetMapping("/getAllCarOwnersForPooling")
-    public ResponseEntity<List<CarOwners>> getAllCarOwnersForPooling() {
-        List<CarOwners> carOwners = poolingProposeService.getAllCarOwnersForPooling();
-        return new ResponseEntity<>(carOwners, HttpStatus.OK);
-    }
 
     @PutMapping("/updateSeat/{id}")
     public void updateSeat(@RequestBody Pooling pooling, @PathVariable Long id)

@@ -24,8 +24,5 @@ public interface PoolingProposeService {
 
     PoolingProproseResponse createUserRequest(PoolingUserRequest poolingUserRequest);
 
-    List<CarOwners> getAllCarOwnersForPooling();
-
-
     void updateSeat(Pooling pooling, Long id);
 }
