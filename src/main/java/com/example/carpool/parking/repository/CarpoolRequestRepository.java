@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface CarpoolRequestRepository extends JpaRepository<UserRequest, Long> {
 
-    @Query("from UserRequest ur join fetch ur.pooling p where p.user.visa = :visa")
+    @Query("from UserRequest ur join fetch ur.pooling p where p.user.visa = :visa and p.date >= current_date order by ur.reservationStatus desc")
     List<UserRequest> findUserRequestByVisa(@Param("visa")String visa);
 }
