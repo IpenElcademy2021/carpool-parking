@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 @RestController
 @RequestMapping(value = "/prc")
-@Transactional
 public class CarpoolRequestController {
 
     @Autowired
