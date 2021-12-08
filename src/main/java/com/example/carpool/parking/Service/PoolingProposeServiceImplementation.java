@@ -1,11 +1,13 @@
 package com.example.carpool.parking.Service;
 
+import com.example.carpool.parking.entities.CarOwners;
 import com.example.carpool.parking.entities.Pooling;
 import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
 import com.example.carpool.parking.payloads.request.PoolingUserRequest;
 import com.example.carpool.parking.payloads.response.PoolingProproseResponse;
 import com.example.carpool.parking.payloads.response.UserResponse;
+import com.example.carpool.parking.repository.CarOwnersRepository;
 import com.example.carpool.parking.repository.PoolingRepository;
 import com.example.carpool.parking.repository.PoolingUserRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
 
     @Autowired
     PoolingUserRequestRepository poolingUserRequestRepository;
+
+    @Autowired
+    CarOwnersRepository carOwnersRepository;
 
     @Override
     public PoolingProproseResponse createPooling(PoolingProposeRequest poolingProposeRequest) {
@@ -65,6 +70,7 @@ public class PoolingProposeServiceImplementation implements PoolingProposeServic
         return new PoolingProproseResponse("New Request Added");
 
     }
+
 
     @Override
     public void updateSeat(Pooling pooling, Long id) {

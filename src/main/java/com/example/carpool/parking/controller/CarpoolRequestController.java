@@ -1,7 +1,6 @@
 package com.example.carpool.parking.controller;
 
 import com.example.carpool.parking.Service.CarpoolRequestService;
-import com.example.carpool.parking.entities.Pooling;
 import com.example.carpool.parking.entities.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 @RestController
 @RequestMapping(value = "/prc")
-@Transactional
 public class CarpoolRequestController {
 
     @Autowired
@@ -31,8 +30,6 @@ public class CarpoolRequestController {
     {
         carpoolRequestService.updateRequest(userRequest, id);
     }
-
-
 
     @GetMapping("/getAll")
     public List<UserRequest> getAll(){

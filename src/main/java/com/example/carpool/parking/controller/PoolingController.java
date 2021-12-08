@@ -6,15 +6,16 @@ import com.example.carpool.parking.entities.UserRequest;
 import com.example.carpool.parking.payloads.request.PoolingProposeRequest;
 import com.example.carpool.parking.payloads.request.PoolingUserRequest;
 import com.example.carpool.parking.payloads.response.PoolingProproseResponse;
-import com.example.carpool.parking.payloads.response.UserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
+@Transactional
 @RestController
 @RequestMapping("/cppk")
 public class PoolingController {
@@ -34,7 +35,6 @@ public class PoolingController {
         PoolingProproseResponse poolingProproseResponse = poolingProposeService.createUserRequest(poolingUserRequest);
         return new ResponseEntity<>(poolingProproseResponse,HttpStatus.CREATED);
     }
-
 
     @GetMapping("/getAllProposePooling")
     public ResponseEntity<List<Pooling>> getAllPooling() {

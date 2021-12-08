@@ -1,6 +1,8 @@
 package com.example.carpool.parking.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,18 +14,18 @@ public class Pooling {
 
     @Id
     @GeneratedValue
-    private Long poolId;
-    private Date date;
-    private String region;
-    private String pickUpPoint;
-    private String pickUpTime;
-    private String departureTime;
-    private int seat;
+    private @Getter @Setter Long poolId;
+    private @Getter @Setter Date date;
+    private @Getter @Setter String region;
+    private @Getter @Setter String pickUpPoint;
+    private @Getter @Setter String pickUpTime;
+    private @Getter @Setter String departureTime;
+    private @Getter @Setter int seat;
 
 
     @ManyToOne
     @JoinColumn(name = "visa", referencedColumnName = "visa")
-    private User user;
+    private @Getter @Setter User user;
 
     @JsonIgnore
     @OneToMany(mappedBy = "pooling")
@@ -43,70 +45,6 @@ public class Pooling {
         this.seat = seat;
     }
 
-    public Long getPoolId() {
-        return poolId;
-    }
-
-    public void setPoolId(Long poolId) {
-        this.poolId = poolId;
-    }
-
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getPickUpPoint() {
-        return pickUpPoint;
-    }
-
-    public void setPickUpPoint(String pickUpPoint) {
-        this.pickUpPoint = pickUpPoint;
-    }
-
-    public String getPickUpTime() {
-        return pickUpTime;
-    }
-
-    public void setPickUpTime(String pickUpTime) {
-        this.pickUpTime = pickUpTime;
-    }
-
-    public String getDepartureTime() {
-        return departureTime;
-    }
-
-    public void setDepartureTime(String departureTime) {
-        this.departureTime = departureTime;
-    }
-
-    public int getSeat() {
-        return seat;
-    }
-
-    public void setSeat(int seat) {
-        this.seat = seat;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     @Override
     public String toString() {
