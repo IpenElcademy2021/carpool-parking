@@ -18,15 +18,10 @@ public class CarOwners {
 
 
     //relationships
-//    @OneToOne(mappedBy = "carOwners", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private @Getter @Setter User user;
 
-//    @OneToOne (fetch = FetchType.LAZY)
-//    @JoinColumn(name = "uservisa")
-//    private @Getter @Setter User user;
 
     @OneToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "visa")
+
 
     private @Getter @Setter User user;
 }
