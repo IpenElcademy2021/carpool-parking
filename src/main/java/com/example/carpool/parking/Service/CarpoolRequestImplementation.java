@@ -14,7 +14,6 @@ public class CarpoolRequestImplementation implements CarpoolRequestService {
 
     @Autowired
     CarpoolRequestRepository carpoolRequestRepository;
-    PoolingRepository poolingRepository;
 
     @Override
     public List<UserRequest> getRequestByVisa(String visa) {
@@ -33,7 +32,6 @@ public class CarpoolRequestImplementation implements CarpoolRequestService {
         })
                 .orElse(null);
     }
-
 
 
     @Override

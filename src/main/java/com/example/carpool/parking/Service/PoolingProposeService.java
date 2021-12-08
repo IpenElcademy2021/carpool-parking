@@ -15,9 +15,8 @@ import java.util.List;
 @Component
 public interface PoolingProposeService {
 
-    //Pooling insertPoolingProposeInformation(Date date,String region,String pickUpPoint,String pickUpTime,String departureTime,int seat);
-
     PoolingProproseResponse createPooling(PoolingProposeRequest poolingProposeRequest);
+
     List<Pooling> getAllPooling();
 
     List<UserRequest> getUserRequestByVisa(String visa);
